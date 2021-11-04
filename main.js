@@ -127,7 +127,7 @@ class Restaurant {
       }
       return null;
     }
-  
+
     averageSalary(callback){
       let result = 0;
       let count = 0;
@@ -185,7 +185,7 @@ class Restaurant {
       }
       return null;
     }
-  
+
     departmentLeader(callback){
         let leader = [];
         let notLeader = [];
@@ -227,7 +227,8 @@ class Restaurant {
   let employeeCard
   let itemBlockInfo
   let itemInfo
-  let item 
+  let item
+    let buttonDelete
   let isFlag = false;
 
   let myWindow = main_block.appendChild(document.createElement('div'))
@@ -270,30 +271,36 @@ class Restaurant {
     let names = document.createElement('div')
     names.innerText = 'change'
     changeEmployee = employeeCard.appendChild(names).className = 'changeEmployee';
-    
+    let deleteBtn = document.createElement('div');
+    deleteBtn.innerText = 'delete'
+    deleteBtn.className = 'buttonDelete'
+    buttonDelete = employeeCard.appendChild(deleteBtn)
 
   })
 
-  
+
 
 
 
   let j
   for(let i = 0; i < document.getElementsByClassName(changeEmployee).length; i++){
-    
-   document.getElementsByClassName(changeEmployee)[i].addEventListener('click', 
+
+   document.getElementsByClassName(changeEmployee)[i].addEventListener('click',
       function () {
         myWindow.style = `display: block`;
         isFlag = true;
         //console.log(document.getElementsByClassName('name')[i].innerText = 'aaaa')
         j = i
         //console.log(i)
-      } 
+      }
    )
-
-
-
-
+   document.getElementsByClassName('buttonDelete')[i].addEventListener('click',
+      function () {
+        let deleteElem = document.getElementsByClassName("employeeCard")[i];
+        deleteElem.parentNode.removeChild(deleteElem);
+        // document.getElementsByClassName(changeEmployee).length--
+      }
+   )
   }
 
 
@@ -303,7 +310,7 @@ class Restaurant {
       changeCard()
       //document.getElementsByClassName('name')[j].innerText = 'bbbbbb'
     }
-    
+
  })
 
   backWindow.addEventListener('click', () => {
@@ -321,47 +328,47 @@ class Restaurant {
         name[j].innerText = input_name.value;
         restaurant.employees[j].name = input_name.value
         input_name.value = ''
-        
+
         console.log(j)
       }
       if(input_position.value !== ''){
         position[j].innerText = input_position.value;
         restaurant.employees[j].position = input_position.value
         input_position.value = ''
-        
+
         console.log(j)
       }
       if(input_isLeader.value !== ''){
         isLeader[j].innerText = input_isLeader.value;
         restaurant.employees[j].isLeader = input_isLeader.value
         input_isLeader.value = ''
-        
+
         console.log(j)
       }
       if(input_salary.value !== ''){
         salary[j].innerText = input_salary.value;
         restaurant.employees[j].salary = input_salary.value
         input_salary.value = ''
-        
+
         console.log(j)
       }
       if(input_isWorks.value !== ''){
         isWorks[j].innerText = input_isWorks.value;
         restaurant.employees[j].isWorks = input_isWorks.value
         input_isWorks.value = ''
-        
+
         console.log(j)
       }
       if(input_department.value !== ''){
         department[j].innerText = input_department.value;
         restaurant.employees[j].department = input_department.value
         input_department.value = ''
-        
+
         console.log(j)
       }
+
       flag = false;
-    } 
+    }
     myWindow.style = `display: none`
   }
-
-
+   window.onload = function() { alert('Страница загружена')}
