@@ -23,6 +23,7 @@ class Restaurant {
         {
           name:'maks',
           position: 'barman',
+          isLeader: false,
           salary: 100,
           isWorks: true,
           department: 1,
@@ -30,6 +31,7 @@ class Restaurant {
         {
           name:'oleg',
           position: 'ofitsiant',
+          isLeader: false,
           salary: 100,
           isWorks: false,
           department: 1,
@@ -37,6 +39,7 @@ class Restaurant {
         {
           name:'marina',
           position: 'ofitsiant',
+          isLeader: false,
           salary: 100,
           isWorks: true,
           department: 1,
@@ -44,6 +47,7 @@ class Restaurant {
         {
           name:'rita',
           position: 'ofitsiant',
+          isLeader: false,
           salary: 100,
           isWorks: true,
           department: 1,
@@ -59,6 +63,7 @@ class Restaurant {
         {
           name:'ivan',
           position: 'cook',
+          isLeader: false,
           salary: 100,
           isWorks: true,
           department: 2,
@@ -66,6 +71,7 @@ class Restaurant {
         {
           name:'mari',
           position: 'assistant-cook',
+          isLeader: false,
           salary: 100,
           isWorks: true,
           department: 2,
@@ -73,6 +79,7 @@ class Restaurant {
         {
           name:'anna',
           position: 'assistant-cook',
+          isLeader: false,
           salary: 110,
           isWorks: true,
           department: 2,
@@ -80,6 +87,7 @@ class Restaurant {
         {
           name:'dima',
           position: 'cleaner',
+          isLeader: false,
           salary: 100,
           isWorks: true,
           department: 2,
@@ -87,6 +95,7 @@ class Restaurant {
         {
           name:'igor',
           position: 'dessert cook',
+          isLeader: false,
           salary: 150,
           isWorks: false,
           department: 4,
@@ -94,6 +103,7 @@ class Restaurant {
         {
           name:'Lexa',
           position: 'dessert cook',
+          isLeader: false,
           salary: 120,
           isWorks: true,
           department: 4,
@@ -213,32 +223,145 @@ class Restaurant {
   let restaurant = new Restaurant()
 
   let main_block = document.getElementsByClassName('main_block')[0];
-  let btn;
+  let changeEmployee;
+  let employeeCard
+  let itemBlockInfo
+  let itemInfo
+  let item 
+  let isFlag = false;
+
+  let myWindow = main_block.appendChild(document.createElement('div'))
+  myWindow.className = 'myWindow'
+  let backWindow = myWindow.appendChild(document.createElement('div'))
+  backWindow.className = 'backWindow'
+  let modalWindow = myWindow.appendChild(document.createElement('div'))
+  modalWindow.className = 'modalWindow'
+
+  for(let i in restaurant.employees[0]) {
+   let input = document.createElement('input');
+   input.type = 'text';
+   input.placeholder = i;
+   input.className = `input_${i}`
+   modalWindow.appendChild(input)
+
+  }
+  let buttonSave = modalWindow.appendChild(document.createElement('div'))
+  buttonSave.innerText = 'SAVE'
+  buttonSave.className = 'buttonSave'
 
 
   restaurant.employees.forEach((employee) => {
-    let employe = main_block.appendChild(document.createElement('div'))
-    employe.className = 'employee'
 
-    
+
+    employeeCard = main_block.appendChild(document.createElement('div'))
+    employeeCard.className = 'employeeCard'
+
     for(let i in employee) {
-        let blk = employe.appendChild(document.createElement('div'));
-        blk.className = 'blk'
-        let par = blk.appendChild(document.createElement('div'));
-        let parr = blk.appendChild(document.createElement('div'));
-        par.innerHTML = i
-        parr.innerHTML = employee[i]
 
+
+      itemBlockInfo = employeeCard.appendChild(document.createElement('div'));
+      itemBlockInfo.className = 'itemBlockInfo'
+        item = itemBlockInfo.appendChild(document.createElement('div'));
+        itemInfo = itemBlockInfo.appendChild(document.createElement('div'));
+        item.innerHTML = i
+        itemInfo.innerHTML = employee[i]
+        itemInfo.className = i;
     }
-    btn = employe.appendChild(document.createElement('div')).className = 'btn'
-    document.getElementsByClassName(btn)[document.getElementsByClassName(btn).length - 1]
-        .addEventListener('click', function () {console.log(Event.target)})
+    let names = document.createElement('div')
+    names.innerText = 'change'
+    changeEmployee = employeeCard.appendChild(names).className = 'changeEmployee';
+    
 
   })
+
   
 
 
 
-//   document.getElementsByClassName(btn)[1].addEventListener('click', function () {
-//       console.log(new Date())
-//   })
+  let j
+  for(let i = 0; i < document.getElementsByClassName(changeEmployee).length; i++){
+    
+   document.getElementsByClassName(changeEmployee)[i].addEventListener('click', 
+      function () {
+        myWindow.style = `display: block`;
+        isFlag = true;
+        //console.log(document.getElementsByClassName('name')[i].innerText = 'aaaa')
+        j = i
+        //console.log(i)
+      } 
+   )
+
+
+
+
+  }
+
+
+  buttonSave.addEventListener('click', () => {
+    console.log(j)
+    if(j !== undefined){
+      changeCard()
+      //document.getElementsByClassName('name')[j].innerText = 'bbbbbb'
+    }
+    
+ })
+
+  backWindow.addEventListener('click', () => {
+    myWindow.style = `display: none`;
+  })
+
+  const [input_name, input_position, input_isLeader, input_salary, input_isWorks, input_department] = ['input_name', 'input_position', 'input_isLeader', 'input_salary', 'input_isWorks', 'input_department']
+  .map((className) => document.getElementsByClassName(className)[0])
+  const [name, position, isLeader, salary, isWorks, department] = ['name', 'position', 'isLeader', 'salary', 'isWorks', 'department']
+  .map((className) => document.getElementsByClassName(className))
+
+  function changeCard () {
+    if(isFlag){
+      if(input_name.value !== ''){
+        name[j].innerText = input_name.value;
+        restaurant.employees[j].name = input_name.value
+        input_name.value = ''
+        
+        console.log(j)
+      }
+      if(input_position.value !== ''){
+        position[j].innerText = input_position.value;
+        restaurant.employees[j].position = input_position.value
+        input_position.value = ''
+        
+        console.log(j)
+      }
+      if(input_isLeader.value !== ''){
+        isLeader[j].innerText = input_isLeader.value;
+        restaurant.employees[j].isLeader = input_isLeader.value
+        input_isLeader.value = ''
+        
+        console.log(j)
+      }
+      if(input_salary.value !== ''){
+        salary[j].innerText = input_salary.value;
+        restaurant.employees[j].salary = input_salary.value
+        input_salary.value = ''
+        
+        console.log(j)
+      }
+      if(input_isWorks.value !== ''){
+        isWorks[j].innerText = input_isWorks.value;
+        restaurant.employees[j].isWorks = input_isWorks.value
+        input_isWorks.value = ''
+        
+        console.log(j)
+      }
+      if(input_department.value !== ''){
+        department[j].innerText = input_department.value;
+        restaurant.employees[j].department = input_department.value
+        input_department.value = ''
+        
+        console.log(j)
+      }
+      flag = false;
+    } 
+    myWindow.style = `display: none`
+  }
+
+
