@@ -32,6 +32,7 @@
     background-color: green;
     text-align: center;
     color: #fff;
+    cursor: pointer;
 }
 .myWindow{
     display: none;
@@ -71,5 +72,18 @@
     width: 20%;
     height: 20px;
     background-color: green;
-
+}
+.buttonDelete{
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  width: 30%;
+  height: 20px;
+  border-radius: 3px;
+  margin: 10px 0;
+  background-color: red;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
 }
