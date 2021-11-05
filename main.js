@@ -567,3 +567,4 @@ class Restaurant {
     }
     myWindow.style = `display: none`
   }
+
