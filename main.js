@@ -515,8 +515,9 @@ class Restaurant {
 
       document.getElementsByClassName('buttonDelete')[i].addEventListener('click', function () {
 
-
-          document.getElementsByClassName('cardBlock')[0].removeChild(event.target.parentNode)
+        // document.getElementsByClassName()
+        event.target.parentNode.remove()
+          //document.getElementsByClassName('cardBlock')[0].removeChild(event.target.parentNode)
 
 
           windowLoad()
@@ -542,7 +543,7 @@ class Restaurant {
  })
 
 
- 
+
   backWindow.addEventListener('click', () => {
     for(let i = 0; i < document.getElementsByClassName('inputInfo').length; i++){
       document.getElementsByClassName('inputInfo')[i].value = '';
@@ -567,4 +568,3 @@ class Restaurant {
     }
     myWindow.style = `display: none`
   }
-
