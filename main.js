@@ -231,210 +231,18 @@ class Restaurant {
 
 
 
-//   let main_block = document.getElementsByClassName('main_block')[0];
-//   let cardBlock = document.createElement('div')
-//   cardBlock.className = 'cardBlock'
-//   main_block.appendChild(cardBlock)
-//   //let main_block = document.getElementsByClassName('main_block')[0];
-//   let changeEmployee;
-//   let employeeCard
-//   let itemBlockInfo
-//   let itemInfo
-//   let item
-//   let buttonDelete
-//   let isFlag = false;
-
-//   let myWindow = main_block.appendChild(document.createElement('div'))
-//   myWindow.className = 'myWindow'
-//   let backWindow = myWindow.appendChild(document.createElement('div'))
-//   backWindow.className = 'backWindow'
-//   let modalWindow = myWindow.appendChild(document.createElement('div'))
-//   modalWindow.className = 'modalWindow'
-
-//   for(let i in restaurant.employees[0]) {
-//    let input = document.createElement('input');
-//    input.type = 'text';
-//    input.placeholder = i;
-//    input.className = `input_${i}`
-//    modalWindow.appendChild(input)
-
-//   }
-//   let buttonSave = modalWindow.appendChild(document.createElement('div'))
-//   buttonSave.innerText = 'SAVE'
-//   buttonSave.className = 'buttonSave'
-
-
-//   restaurant.employees.forEach((employee) => {
-
-
-//     employeeCard = main_block.appendChild(document.createElement('div'))
-//     employeeCard.className = 'employeeCard'
-
-//     for(let i in employee) {
-
-
-//       itemBlockInfo = employeeCard.appendChild(document.createElement('div'));
-//       itemBlockInfo.className = 'itemBlockInfo'
-//         item = itemBlockInfo.appendChild(document.createElement('div'));
-//         itemInfo = itemBlockInfo.appendChild(document.createElement('div'));
-//         item.innerHTML = i
-//         itemInfo.innerHTML = employee[i]
-//         itemInfo.className = i;
-//     }
-//     let names = document.createElement('div')
-//     names.innerText = 'change'
-//     changeEmployee = employeeCard.appendChild(names).className = 'changeEmployee';
-//     let deleteBtn = document.createElement('div');
-//     deleteBtn.innerText = 'delete'
-//     deleteBtn.className = 'buttonDelete'
-//     buttonDelete = employeeCard.appendChild(deleteBtn)
-
-//   })
-
-
-
-
-
-//   let j
-
-//   window.addEventListener('load', function windowLoad () {
-//     console.log('qwe')
-//     for(let i = 0; i < document.getElementsByClassName(changeEmployee).length; i++){
-//       //console.log(i)
-//       document.getElementsByClassName(changeEmployee)[i].addEventListener('click',
-//          function () {
-//            myWindow.style = `display: block`;
-//            isFlag = true;
-//            j = i
-//          }
-//       )
-//       document.getElementsByClassName('buttonDelete')[i].addEventListener('click',
-//          function () {
-//           console.log(document.getElementsByClassName('buttonDelete')[i], i)
-//            let deleteElem = document.getElementsByClassName("employeeCard")[i];
-//            deleteElem.parentNode.removeChild(deleteElem);
-//            //console.log(document.getElementsByClassName(changeEmployee).length, i)
-//            windowLoad()
-//          }
-//       )
-//      }
-//   })
-
-
-
-
-
-
-
-//   // for(let i = 0; i < document.getElementsByClassName(changeEmployee).length; i++){
-//   //  document.getElementsByClassName(changeEmployee)[i].addEventListener('click',
-//   //     function () {
-//   //       myWindow.style = `display: block`;
-//   //       isFlag = true;
-//   //       j = i
-//   //     }
-//   //  )
-//   //  document.getElementsByClassName('buttonDelete')[i].addEventListener('click',
-//   //     function () {
-//   //       let deleteElem = document.getElementsByClassName("employeeCard")[i];
-//   //       deleteElem.parentNode.removeChild(deleteElem);
-//   //     }
-//   //  )
-//   // }
-
-
-//   buttonSave.addEventListener('click', () => {
-//     console.log(j)
-//     if(j !== undefined){
-//       changeCard()
-//       //document.getElementsByClassName('name')[j].innerText = 'bbbbbb'
-//     }
-
-//  })
-
-//   backWindow.addEventListener('click', () => {
-//     myWindow.style = `display: none`;
-//   })
-
-//   const [input_name, input_position, input_isLeader, input_salary, input_isWorks, input_department] = ['input_name', 'input_position', 'input_isLeader', 'input_salary', 'input_isWorks', 'input_department']
-//   .map((className) => document.getElementsByClassName(className)[0])
-//   const [name, position, isLeader, salary, isWorks, department] = ['name', 'position', 'isLeader', 'salary', 'isWorks', 'department']
-//   .map((className) => document.getElementsByClassName(className))
-
-//   function changeCard () {
-//     if(isFlag){
-//       if(input_name.value !== ''){
-//         name[j].innerText = input_name.value;
-//         restaurant.employees[j].name = input_name.value
-//         input_name.value = ''
-
-//         console.log(j)
-//       }
-//       if(input_position.value !== ''){
-//         position[j].innerText = input_position.value;
-//         restaurant.employees[j].position = input_position.value
-//         input_position.value = ''
-
-//         console.log(j)
-//       }
-//       if(input_isLeader.value !== ''){
-//         isLeader[j].innerText = input_isLeader.value;
-//         restaurant.employees[j].isLeader = input_isLeader.value
-//         input_isLeader.value = ''
-
-//         console.log(j)
-//       }
-//       if(input_salary.value !== ''){
-//         salary[j].innerText = input_salary.value;
-//         restaurant.employees[j].salary = input_salary.value
-//         input_salary.value = ''
-
-//         console.log(j)
-//       }
-//       if(input_isWorks.value !== ''){
-//         isWorks[j].innerText = input_isWorks.value;
-//         restaurant.employees[j].isWorks = input_isWorks.value
-//         input_isWorks.value = ''
-
-//         console.log(j)
-//       }
-//       if(input_department.value !== ''){
-//         department[j].innerText = input_department.value;
-//         restaurant.employees[j].department = input_department.value
-//         input_department.value = ''
-
-//         console.log(j)
-//       }
-
-//       flag = false;
-//     }
-//     myWindow.style = `display: none`
-//   }
-//   // window.onload = function() { alert('Страница загружена')}
-// // window.addEventListener('load', function test () {
-// //     console.log('ad')
-// //     document.getElementsByClassName('buttonDelete')[0].addEventListener('click', () => {
-// //       test()
-// //     })
-// //   }
-
-
-// // main_block.addEventListener('click', () => {
-// //   evn = event.target
-// //   console.log(document.getElementsByClassName('name'))
-// //   console.log(evn)
-// // })
-
-
-
-
+//
 
 
 
   let mainBlock = document.getElementsByClassName('mainBlock')[0];
   let cardBlock = document.createElement('div')
+  let buttonAddCard = document.createElement('div')
+  buttonAddCard.className = 'buttonAddCard'
+  buttonAddCard.innerText = 'add card'
   cardBlock.className = 'cardBlock'
   mainBlock.appendChild(cardBlock)
+  mainBlock.appendChild(buttonAddCard)
   let changeEmployee;
   let employeeCard
   let itemBlockInfo
@@ -464,7 +272,7 @@ class Restaurant {
 
 
 
-
+function createCard () {
   restaurant.employees.forEach((employee) => {
     employeeCard = cardBlock.appendChild(document.createElement('div'))
     employeeCard.className = 'employeeCard'
@@ -488,6 +296,8 @@ class Restaurant {
     deleteBtn.className = 'buttonDelete'
     buttonDelete = employeeCard.appendChild(deleteBtn)
   })
+}
+createCard ()
 
 
 
@@ -499,14 +309,19 @@ class Restaurant {
 
 
   let parent
-  window.addEventListener('load', () => windowLoad())
+  window.addEventListener('load', () => {
+    // createCard()
+    windowLoad()
 
+  })
+let evnt
   function windowLoad () {
     for(let i = 0; i < document.getElementsByClassName('cardBlock')[0].children.length; i++){
 
       document.getElementsByClassName(changeEmployee)[i].addEventListener('click',
          function () {
            myWindow.style = `display: block`;
+           evnt = event.target
            isFlag = true;
            j = i
          }
@@ -526,7 +341,11 @@ class Restaurant {
      }
   }
 
-
+buttonAddCard.addEventListener('click', () => {
+  console.log(isFlag)
+  j = true;
+  myWindow.style = `display: block`;
+})
 
 
 
@@ -537,6 +356,7 @@ class Restaurant {
 
 
   buttonSave.addEventListener('click', () => {
+    //console.log(j)
     if(j !== undefined){
       changeCard()
     }
@@ -548,6 +368,7 @@ class Restaurant {
     for(let i = 0; i < document.getElementsByClassName('inputInfo').length; i++){
       document.getElementsByClassName('inputInfo')[i].value = '';
     }
+    isFlag = false;
     myWindow.style = `display: none`;
   })
 
@@ -555,16 +376,36 @@ class Restaurant {
 
   let elem
   function changeCard () {
+  //  console.log(123)
     let elemCard = document.getElementsByClassName('inputInfo')
     if(isFlag){
+      let mas = []
       for(let i = 0; i < elemCard.length; i++) {
         if(elemCard[i].value !== '') {
-          elem = document.getElementsByClassName(elemCard[i].placeholder)
-          elem[j].innerText  = elemCard[i].value
-          elemCard[i].value = ''
+          // for (let ind in restaurant.employees[j]) {
+          //   mas.push(ind)
+          // }
+          let mm = elemCard[i].placeholder
+          // restaurant.employees[j].mas[i] = elemCard[i].value
+          restaurant.employees[j][mm] = elemCard[i].value
+          console.log(restaurant.employees[j])
+
+          //console.log(restaurant.employees[j])
+
+
+           evnt.parentElement.children[i].children[1].innerText = elemCard[i].value
+           elemCard[i].value = ''
+
         }
       }
       flag = false;
+    } else {
+      for(let i = 0; i < elemCard.length; i++) {
+        if(elemCard[i].value !== '') {
+          console.log(elemCard[i].value)
+        }
+      }
+    //  console.log(12344)
     }
     myWindow.style = `display: none`
   }
