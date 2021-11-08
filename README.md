@@ -1,220 +1,220 @@
 
 class Restaurant {
-constructor() {
-  this.departments = [
-    {
-      number: 1,
-      name: 'hall'
-    },
-    {
-      number: 2,
-      name: 'cook'
-    },
-    {
-      number: 3,
-      name: 'dessert cook'
-    },
-  ];
-  this.employees = [
-    {
-      name:'maks',
-      position: 'barman',
-      isLeader: false,
-      salary: 100,
-      isWorks: true,
-      department: 1,
-    },
-    {
-      name:'oleg',
-      position: 'ofitsiant',
-      isLeader: false,
-      salary: 100,
-      isWorks: false,
-      department: 1,
-    },
-    {
-      name:'marina',
-      position: 'ofitsiant',
-      isLeader: false,
-      salary: 100,
-      isWorks: true,
-      department: 1,
-    },
-    {
-      name:'rita',
-      position: 'ofitsiant',
-      isLeader: false,
-      salary: 100,
-      isWorks: true,
-      department: 1,
-    },
-    {
-      name:'semen',
-      position: 'ofitsiant',
-      isLeader: true,
-      salary: 40,
-      isWorks: true,
-      department: 1,
-    },
-    {
-      name:'ivan',
-      position: 'cook',
-      isLeader: false,
-      salary: 100,
-      isWorks: true,
-      department: 2,
-    },
-    // {
-    //   name:'mari',
-    //   position: 'assistant-cook',
-    //   isLeader: false,
-    //   salary: 100,
-    //   isWorks: true,
-    //   department: 2,
-    // },
-    // {
-    //   name:'anna',
-    //   position: 'assistant-cook',
-    //   isLeader: false,
-    //   salary: 110,
-    //   isWorks: true,
-    //   department: 2,
-    // },
-    // {
-    //   name:'dima',
-    //   position: 'cleaner',
-    //   isLeader: false,
-    //   salary: 100,
-    //   isWorks: true,
-    //   department: 2,
-    // },
-    // {
-    //   name:'igor',
-    //   position: 'dessert cook',
-    //   isLeader: false,
-    //   salary: 150,
-    //   isWorks: false,
-    //   department: 4,
-    // },
-    {
-      name:'Lexa',
-      position: 'dessert cook',
-      isLeader: false,
-      salary: 120,
-      isWorks: true,
-      department: 3,
-    }
-  ]
-}
-
-sumSalary(callback){
-  let result = {};
-  if(this.departments.length && this.employees.length) {
-    this.employees.forEach((employee) => {
-      if(callback(employee)){
-        if(result[employee.department]) {
-          result[employee.department] += employee.salary;
-        } else {
-          result[employee.department] = employee.salary;
-        }
+  constructor() {
+    this.departments = [
+      {
+        number: 1,
+        name: 'hall'
+      },
+      {
+        number: 2,
+        name: 'cook'
+      },
+      {
+        number: 3,
+        name: 'dessert cook'
+      },
+    ];
+    this.employees = [
+      {
+        name:'maks',
+        position: 'barman',
+        isLeader: false,
+        salary: 100,
+        isWorks: true,
+        department: 1,
+      },
+      {
+        name:'oleg',
+        position: 'ofitsiant',
+        isLeader: false,
+        salary: 100,
+        isWorks: false,
+        department: 1,
+      },
+      {
+        name:'marina',
+        position: 'ofitsiant',
+        isLeader: false,
+        salary: 100,
+        isWorks: true,
+        department: 1,
+      },
+      {
+        name:'rita',
+        position: 'ofitsiant',
+        isLeader: false,
+        salary: 100,
+        isWorks: true,
+        department: 1,
+      },
+      {
+        name:'semen',
+        position: 'ofitsiant',
+        isLeader: true,
+        salary: 40,
+        isWorks: true,
+        department: 1,
+      },
+      {
+        name:'ivan',
+        position: 'cook',
+        isLeader: false,
+        salary: 100,
+        isWorks: true,
+        department: 2,
+      },
+      // {
+      //   name:'mari',
+      //   position: 'assistant-cook',
+      //   isLeader: false,
+      //   salary: 100,
+      //   isWorks: true,
+      //   department: 2,
+      // },
+      // {
+      //   name:'anna',
+      //   position: 'assistant-cook',
+      //   isLeader: false,
+      //   salary: 110,
+      //   isWorks: true,
+      //   department: 2,
+      // },
+      // {
+      //   name:'dima',
+      //   position: 'cleaner',
+      //   isLeader: false,
+      //   salary: 100,
+      //   isWorks: true,
+      //   department: 2,
+      // },
+      // {
+      //   name:'igor',
+      //   position: 'dessert cook',
+      //   isLeader: false,
+      //   salary: 150,
+      //   isWorks: false,
+      //   department: 4,
+      // },
+      {
+        name:'Lexa',
+        position: 'dessert cook',
+        isLeader: false,
+        salary: 120,
+        isWorks: true,
+        department: 3,
       }
-    })
-    return result;
+    ]
   }
-  return null;
-}
-
-averageSalary(callback){
-  let result = 0;
-  let count = 0;
-  if(this.departments.length && this.employees.length) {
-    this.employees.forEach((employee) => {
-      if(callback(employee)){
-        count++;
-        result += employee.salary;
-      }
-    })
-    return result/count;
-  }
-  return null;
-}
-
-salaryMinToMax(callback){
-  let result = {};
-  if(this.departments.length && this.employees.length) {
-    this.departments.forEach((department) => {
-      result[department.number] = {};
+  
+  sumSalary(callback){
+    let result = {};
+    if(this.departments.length && this.employees.length) {
       this.employees.forEach((employee) => {
-        if(callback(employee) && department.number === employee.department){
-          if(result[department.number][employee.position]){
-            if(result[department.number][employee.position].min > employee.salary){
-              result[department.number][employee.position].min = employee.salary;
-            }
-            if(result[department.number][employee.position].max < employee.salary){
-              result[department.number][employee.position].max = employee.salary;
-            }
+        if(callback(employee)){
+          if(result[employee.department]) {
+            result[employee.department] += employee.salary;
           } else {
-            result[department.number][employee.position] = {};
-            result[department.number][employee.position].min = employee.salary;
-            result[department.number][employee.position].max = employee.salary;
+            result[employee.department] = employee.salary;
           }
         }
       })
-      if(Object.keys(result[department.number]).length === 0){
-        delete result[department.number];
-      }
-    })
-    return result;
-  }
-  return null;
-}
-
-amountEmployee (callback) {
-  let result = 0;
-  if(this.departments.length && this.employees.length) {
-    this.employees.forEach((employee) => {
-      if(callback(employee)) {
-        result++;
-      }
-    })
-    return result;
-  }
-  return null;
-}
-
-departmentLeader(callback){
-  let leader = [];
-  let notLeader = [];
-  if(this.departments.length && this.employees.length) {
-    this.employees.forEach((employee) => {
-      if(employee.isLeader) {
-        leader.push(employee.department);
-      }
-      if(callback(employee)){
-        notLeader.push(employee.department);
-      }
-    })
-    if(leader.toString() === notLeader.toString()) {
-      return leader;
+      return result;
     }
-    leader.forEach((item) => {
-      for(let i = 0; i < notLeader.length; i++){
-        if(item === notLeader[i]){
+    return null;
+  }
+  
+  averageSalary(callback){
+    let result = 0;
+    let count = 0;
+    if(this.departments.length && this.employees.length) {
+      this.employees.forEach((employee) => {
+        if(callback(employee)){
+          count++;
+          result += employee.salary;
+        }
+      })
+      return result/count;
+    }
+    return null;
+  }
+  
+  salaryMinToMax(callback){
+    let result = {};
+    if(this.departments.length && this.employees.length) {
+      this.departments.forEach((department) => {
+        result[department.number] = {};
+        this.employees.forEach((employee) => {
+          if(callback(employee) && department.number === employee.department){
+            if(result[department.number][employee.position]){
+              if(result[department.number][employee.position].min > employee.salary){
+                result[department.number][employee.position].min = employee.salary;
+              }
+              if(result[department.number][employee.position].max < employee.salary){
+                result[department.number][employee.position].max = employee.salary;
+              }
+            } else {
+              result[department.number][employee.position] = {};
+              result[department.number][employee.position].min = employee.salary;
+              result[department.number][employee.position].max = employee.salary;
+            }
+          }
+        })
+        if(Object.keys(result[department.number]).length === 0){
+          delete result[department.number];
+        }
+      })
+      return result;
+    }
+    return null;
+  }
+  
+  amountEmployee (callback) {
+    let result = 0;
+    if(this.departments.length && this.employees.length) {
+      this.employees.forEach((employee) => {
+        if(callback(employee)) {
+          result++;
+        }
+      })
+      return result;
+    }
+    return null;
+  }
+  
+  departmentLeader(callback){
+    let leader = [];
+    let notLeader = [];
+    if(this.departments.length && this.employees.length) {
+      this.employees.forEach((employee) => {
+        if(employee.isLeader) {
+          leader.push(employee.department);
+        }
+        if(callback(employee)){
+          notLeader.push(employee.department);
+        }
+      })
+      if(leader.toString() === notLeader.toString()) {
+        return leader;
+      }
+      leader.forEach((item) => {
+        for(let i = 0; i < notLeader.length; i++){
+          if(item === notLeader[i]){
+            notLeader.splice(i, 1);
+            i--;
+          }
+        }
+      })
+      for(let i = 1; i < notLeader.length; i++){
+        if(notLeader[i] === notLeader[i - 1]){
           notLeader.splice(i, 1);
           i--;
         }
       }
-    })
-    for(let i = 1; i < notLeader.length; i++){
-      if(notLeader[i] === notLeader[i - 1]){
-        notLeader.splice(i, 1);
-        i--;
-      }
+      return notLeader;
     }
-    return notLeader;
+    return null;
   }
-  return null;
-}
 }
 let restaurant = new Restaurant()
 
@@ -259,9 +259,7 @@ sumSalary.innerHTML = `
 
 <select class="selectIsWorks">
 <option>true</option>
-  <option>false</option>
-  
-  <option>oll works</option>
+<option>false</option>
 </select>
 
 
@@ -269,18 +267,39 @@ sumSalary.innerHTML = `
 
 
 <select class="selectDepartment">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>oll department</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>all department</option>
 </select>
 <div class="resultSumSalary"></div>
 `
-// document.getElementsByClassName('ButtonSumSalary')[0].addEventListener('click', () => {
-//   restaurant.sumSalary((item) => {
-
-//   })
+// document.querySelector('.ButtonSumSalary').addEventListener('click', () => {
+//   console.log(123)
+//   // restaurant.sumSalary((item) => {
+//   //
+//   // })
 // })
+let uuu
+document.querySelector('.buttonSumSalary').addEventListener('click', () => {
+  let dapartmentValue
+  if(document.querySelector('.selectDepartment').value === 'all department'){
+    dapartmentValue = true;
+  } else {
+    dapartmentValue = document.querySelector('.selectDepartment').value;
+  }
+  //console.log(dapartmentValue)
+  if(document.querySelector('.selectIsWorks').value === 'all works'){
+    //console.log(dapartmentValue)
+    console.log(dapartmentValue)
+    console.log(restaurant.sumSalary((i) => i.department == dapartmentValue))
+  }
+  // else {
+  //   console.log(restaurant.sumSalary((item) => {
+  //     (item.department = dapartmentValue) && (item.isWorks = document.querySelector('.selectIsWorks').value)
+  //   }))
+  // }
+})
 
 
 
@@ -298,23 +317,23 @@ for(let i in restaurant.employees[0]) {
     let div = document.createElement('div');
     div.innerHTML = `<p>${i}</p>
     <input type="radio" id="contactChoice1" name="isWorks" value="true">
-   <label for="contactChoice1">yes</label>
-   <input type="radio" id="contactChoice2" name="isWorks" value="false">
-   <label for="contactChoice2">no</label>`
-   div.className = 'inputInfo'
-   modalWindow.appendChild(div)
+    <label for="contactChoice1">yes</label>
+    <input type="radio" id="contactChoice2" name="isWorks" value="false">
+    <label for="contactChoice2">no</label>`
+    div.className = 'inputInfo'
+    modalWindow.appendChild(div)
   } else {
     if(i === 'isLeader') {
       let div = document.createElement('div');
       
       div.innerHTML = `<p>${i}</p>
       <input type="radio" id="contactChoice3" name="isLeader" value="true" >
-     <label for="contactChoice3">yes</label>
-     <input type="radio" id="contactChoice4" name="isLeader" value="false">
-     <label for="contactChoice4">no</label>`
-     div.className = 'inputInfo'
-     modalWindow.appendChild(div)
-    } 
+      <label for="contactChoice3">yes</label>
+      <input type="radio" id="contactChoice4" name="isLeader" value="false">
+      <label for="contactChoice4">no</label>`
+      div.className = 'inputInfo'
+      modalWindow.appendChild(div)
+    }
     else{
       let input = document.createElement('input');
       input.type = 'text';
@@ -324,8 +343,8 @@ for(let i in restaurant.employees[0]) {
       modalWindow.appendChild(input)
     }
   }
-
-
+  
+  
 }
 let buttonSave = modalWindow.appendChild(document.createElement('div'))
 buttonSave.innerText = 'SAVE'
@@ -334,7 +353,7 @@ buttonSave.className = 'buttonSave'
 
 let objectEmployee
 let objectEmployees
-let x 
+let x
 let y
 
 function createCard () {
@@ -385,10 +404,10 @@ function createCard () {
         event.target.parentNode.remove()
       })
     }
-
+    
   }
-
-
+  
+  
 }
 createCard ()
 
@@ -402,9 +421,9 @@ let j
 
 let parent
 window.addEventListener('load', () => {
-// createCard()
-// windowLoad()
-
+  // createCard()
+  // windowLoad()
+  
 })
 let evnt
 let flags = true
@@ -412,9 +431,9 @@ let flags = true
 
 
 buttonAddCard.addEventListener('click', () => {
-console.log(isFlag)
-j = true;
-myWindow.style = `display: block`;
+  console.log(isFlag)
+  j = true;
+  myWindow.style = `display: block`;
 })
 
 
@@ -426,90 +445,92 @@ myWindow.style = `display: block`;
 
 
 buttonSave.addEventListener('click', () => {
-
+  
   changeCard()
-
+  
 })
 
 
 
 backWindow.addEventListener('click', () => {
-for(let i = 0; i < document.getElementsByClassName('inputInfo').length; i++){
-  document.getElementsByClassName('inputInfo')[i].value = '';
-}
-isFlag = false;
-myWindow.style = `display: none`;
+  for(let i = 0; i < document.getElementsByClassName('inputInfo').length; i++){
+    document.getElementsByClassName('inputInfo')[i].value = '';
+  }
+  isFlag = false;
+  myWindow.style = `display: none`;
 })
 
 let mas
 
 let elem
 function changeCard () {
-
-let elemCard = document.getElementsByClassName('inputInfo')
-if(isFlag){
-  for(let i = 0; i < elemCard.length; i++) {
-    if(document.getElementsByClassName('inputInfo')[i].children.length){
-      mas = document.getElementsByClassName('inputInfo')[i]
-      for(let j = 0; j < mas.children.length; j++) {
-        if(mas.children[j].checked) {
-          let mm = mas.children[j].name
-          restaurant.employees[x][mm] = Boolean(mas.children[j].value === 'true')
-          evnt.parentElement.children[i].children[1].innerText = '' + mas.children[j].value
-          //+ mas.children[i].value
-
+  
+  let elemCard = document.getElementsByClassName('inputInfo')
+  if(isFlag){
+    for(let i = 0; i < elemCard.length; i++) {
+      if(document.getElementsByClassName('inputInfo')[i].children.length){
+        mas = document.getElementsByClassName('inputInfo')[i]
+        for(let j = 0; j < mas.children.length; j++) {
+          if(mas.children[j].checked) {
+            let mm = mas.children[j].name
+            restaurant.employees[x][mm] = Boolean(mas.children[j].value === 'true')
+            evnt.parentElement.children[i].children[1].innerText = '' + mas.children[j].value
+            //+ mas.children[i].value
+            
+          }
         }
-      }
-
-    } else {
-      if(elemCard[i].value !== '') {
-        let mm = elemCard[i].placeholder
         
-        //console.log(restaurant.employees[j])
-        if (elemCard[i].placeholder === 'salary' || elemCard[i].placeholder === 'department') {
-          restaurant.employees[x][mm] = Number(elemCard[i].value)
-
-        } else {
-          restaurant.employees[x][mm] = elemCard[i].value
+      } else {
+        if(elemCard[i].value !== '') {
+          let mm = elemCard[i].placeholder
+          
+          //console.log(restaurant.employees[j])
+          if (elemCard[i].placeholder === 'salary' || elemCard[i].placeholder === 'department') {
+            restaurant.employees[x][mm] = Number(elemCard[i].value)
+            
+          } else {
+            restaurant.employees[x][mm] = elemCard[i].value
+          }
+          evnt.parentElement.children[i].children[1].innerText = elemCard[i].value
+          elemCard[i].value = ''
         }
-        evnt.parentElement.children[i].children[1].innerText = elemCard[i].value
-        elemCard[i].value = ''
       }
+      
+      
     }
-
-
-  }
-  isFlag = false;
-} else {
-  let obj = {};
-  for(let i = 0; i < elemCard.length; i++) {
-    let mass = document.getElementsByClassName('inputInfo')[i]
-    if(mass.children.length){
-
-      for(let j = 0; j < mass.children.length; j++) {
-        if(mass.children[j].checked) {
-          let namess = mass.children[j].name
-          obj[namess] = Boolean(mass.children[j].value === 'true')
-
+    isFlag = false;
+  } else {
+    let obj = {};
+    for(let i = 0; i < elemCard.length; i++) {
+      let mass = document.getElementsByClassName('inputInfo')[i]
+      if(mass.children.length){
+        
+        for(let j = 0; j < mass.children.length; j++) {
+          if(mass.children[j].checked) {
+            let namess = mass.children[j].name
+            obj[namess] = Boolean(mass.children[j].value === 'true')
+            
+          }
+        }
+      } else {
+        if(elemCard[i].value !== '') {
+          let nameElem = elemCard[i].placeholder;
+          if (elemCard[i].placeholder === 'salary' || elemCard[i].placeholder === 'department') {
+            obj[nameElem] = Number(elemCard[i].value)
+          } else {
+            obj[nameElem] = elemCard[i].value;
+          }
+          elemCard[i].value = ''
         }
       }
-    } else {
-      if(elemCard[i].value !== '') {
-        let nameElem = elemCard[i].placeholder;
-        if (elemCard[i].placeholder === 'salary' || elemCard[i].placeholder === 'department') {
-          obj[nameElem] = Number(elemCard[i].value)
-        } else {
-          obj[nameElem] = elemCard[i].value;
-        }
-        elemCard[i].value = ''
-      }
+      
     }
-
+    restaurant.employees.push(obj)
+    
+    createCard()
   }
-  restaurant.employees.push(obj)
-
-  createCard()
-}
-myWindow.style = `display: none`
+  myWindow.style = `display: none`
 }
 
+
+// document.querySelector('.buttonSumSalary').addEventListener('click', () => {console.log('qwe')})
