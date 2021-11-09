@@ -1,4 +1,3 @@
-
 class Restaurant {
   constructor() {
     this.departments = [
@@ -33,69 +32,29 @@ class Restaurant {
         department: 1,
       },
       {
-        name:'marina',
-        position: 'ofitsiant',
-        isLeader: false,
-        salary: 100,
-        isWorks: true,
-        department: 1,
-      },
-      {
-        name:'rita',
-        position: 'ofitsiant',
-        isLeader: false,
-        salary: 100,
-        isWorks: true,
-        department: 1,
-      },
-      {
-        name:'semen',
-        position: 'ofitsiant',
-        isLeader: true,
-        salary: 40,
-        isWorks: true,
-        department: 1,
-      },
-      {
-        name:'ivan',
-        position: 'cook',
+        name:'mari',
+        position: 'assistant-cook',
         isLeader: false,
         salary: 100,
         isWorks: true,
         department: 2,
       },
-      // {
-      //   name:'mari',
-      //   position: 'assistant-cook',
-      //   isLeader: false,
-      //   salary: 100,
-      //   isWorks: true,
-      //   department: 2,
-      // },
-      // {
-      //   name:'anna',
-      //   position: 'assistant-cook',
-      //   isLeader: false,
-      //   salary: 110,
-      //   isWorks: true,
-      //   department: 2,
-      // },
-      // {
-      //   name:'dima',
-      //   position: 'cleaner',
-      //   isLeader: false,
-      //   salary: 100,
-      //   isWorks: true,
-      //   department: 2,
-      // },
-      // {
-      //   name:'igor',
-      //   position: 'dessert cook',
-      //   isLeader: false,
-      //   salary: 150,
-      //   isWorks: false,
-      //   department: 4,
-      // },
+      {
+        name:'dima',
+        position: 'cleaner',
+        isLeader: false,
+        salary: 100,
+        isWorks: true,
+        department: 2,
+      },
+      {
+        name:'igor',
+        position: 'dessert cook',
+        isLeader: false,
+        salary: 150,
+        isWorks: false,
+        department: 3,
+      },
       {
         name:'Lexa',
         position: 'dessert cook',
@@ -218,319 +177,251 @@ class Restaurant {
 }
 let restaurant = new Restaurant()
 
-
-
-
-
-
-
-
-
-
-//
-
-
-
-let mainBlock = document.getElementsByClassName('mainBlock')[0];
-let cardBlock = document.createElement('div')
-let buttonAddCard = document.createElement('div')
-buttonAddCard.className = 'buttonAddCard'
-buttonAddCard.innerText = 'add card'
-cardBlock.className = 'cardBlock'
-mainBlock.appendChild(cardBlock)
-mainBlock.appendChild(buttonAddCard)
+let mainBlock = document.querySelector('.mainBlock');
+let cardBlock = document.createElement('div');
+let buttonAddCard = document.createElement('div');
+buttonAddCard.className = 'buttonAddCard';
+buttonAddCard.innerText = 'add card';
+cardBlock.className = 'cardBlock';
+mainBlock.appendChild(cardBlock);
+mainBlock.appendChild(buttonAddCard);
 let changeEmployee;
-let employeeCard
-let itemBlockInfo
-let itemInfo
-let item
-let buttonDelete
+let employeeCard;
+let itemBlockInfo;
+let employeeInfo;
+let employeeProperty;
+let eventTarget
+let buttonDelete;
 let isFlag = false;
-
-let sumSalary = document.createElement('div')
-mainBlock.appendChild(sumSalary)
-sumSalary.className = 'sumSalary'
-sumSalary.innerHTML = `
-
-<div class="buttonSumSalary">calculate salary</div>
-
-<p>is works</p>
-
-
-<select class="selectIsWorks">
-<option>true</option>
-<option>false</option>
-</select>
-
-
-<p>Department</p>
-
-
-<select class="selectDepartment">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>all department</option>
-</select>
-<div class="resultSumSalary"></div>
-`
-// document.querySelector('.ButtonSumSalary').addEventListener('click', () => {
-//   console.log(123)
-//   // restaurant.sumSalary((item) => {
-//   //
-//   // })
-// })
-let uuu
-document.querySelector('.buttonSumSalary').addEventListener('click', () => {
-  let dapartmentValue
-  if(document.querySelector('.selectDepartment').value === 'all department'){
-    dapartmentValue = true;
-  } else {
-    dapartmentValue = document.querySelector('.selectDepartment').value;
-  }
-  //console.log(dapartmentValue)
-  if(document.querySelector('.selectIsWorks').value === 'all works'){
-    //console.log(dapartmentValue)
-    console.log(dapartmentValue)
-    console.log(restaurant.sumSalary((i) => i.department == dapartmentValue))
-  }
-  // else {
-  //   console.log(restaurant.sumSalary((item) => {
-  //     (item.department = dapartmentValue) && (item.isWorks = document.querySelector('.selectIsWorks').value)
-  //   }))
-  // }
-})
-
-
-
-
-
-let myWindow = mainBlock.appendChild(document.createElement('div'))
-myWindow.className = 'myWindow'
-let backWindow = myWindow.appendChild(document.createElement('div'))
-backWindow.className = 'backWindow'
-let modalWindow = myWindow.appendChild(document.createElement('div'))
-modalWindow.className = 'modalWindow'
-for(let i in restaurant.employees[0]) {
-  //console.log(typeof i)
-  if(i === 'isWorks') {
-    let div = document.createElement('div');
-    div.innerHTML = `<p>${i}</p>
-    <input type="radio" id="contactChoice1" name="isWorks" value="true">
-    <label for="contactChoice1">yes</label>
-    <input type="radio" id="contactChoice2" name="isWorks" value="false">
-    <label for="contactChoice2">no</label>`
-    div.className = 'inputInfo'
-    modalWindow.appendChild(div)
-  } else {
-    if(i === 'isLeader') {
-      let div = document.createElement('div');
-      
-      div.innerHTML = `<p>${i}</p>
-      <input type="radio" id="contactChoice3" name="isLeader" value="true" >
-      <label for="contactChoice3">yes</label>
-      <input type="radio" id="contactChoice4" name="isLeader" value="false">
-      <label for="contactChoice4">no</label>`
-      div.className = 'inputInfo'
-      modalWindow.appendChild(div)
-    }
-    else{
-      let input = document.createElement('input');
-      input.type = 'text';
-      input.placeholder = i;
-      input.className = 'inputInfo'
-      //  input.className = `input_${i}`
-      modalWindow.appendChild(input)
-    }
-  }
-  
-  
-}
-let buttonSave = modalWindow.appendChild(document.createElement('div'))
-buttonSave.innerText = 'SAVE'
-buttonSave.className = 'buttonSave'
-
-
-let objectEmployee
-let objectEmployees
-let x
-let y
-
-function createCard () {
-  for(let i = 0; i < restaurant.employees.length; i++){
-    if(!cardBlock.children[i]) {
-      employeeCard = cardBlock.appendChild(document.createElement('div'))
-      employeeCard.className = 'employeeCard'
-      for(let j in restaurant.employees[i]) {
-        itemBlockInfo = employeeCard.appendChild(document.createElement('div'));
-        itemBlockInfo.className = 'itemBlockInfo'
-        item = itemBlockInfo.appendChild(document.createElement('div'));
-        itemInfo = itemBlockInfo.appendChild(document.createElement('div'));
-        item.innerHTML = j;
-        itemInfo.innerHTML = restaurant.employees[i][j];
-        itemInfo.className = j;
-      }
-      
-      let names = document.createElement('div')
-      names.innerText = 'change'
-      changeEmployee = employeeCard.appendChild(names)
-      changeEmployee.className = 'changeEmployee';
-      changeEmployee.addEventListener('click', () => {
-        myWindow.style = `display: block`;
-        // objectEmployee = restaurant.employees[i];
-        
-        evnt = event.target
-        console.log(evnt.parentNode)
-        isFlag = true;
-        for(let i = 0; i < cardBlock.children.length; i++){
-          if(evnt.parentNode === cardBlock.children[i]){
-            x = i
-            console.log(i)
-          }
-        }
-      })
-      let deleteBtn = document.createElement('div');
-      deleteBtn.innerText = 'delete'
-      deleteBtn.className = 'buttonDelete'
-      buttonDelete = employeeCard.appendChild(deleteBtn)
-      buttonDelete.addEventListener('click', () => {
-        for(let i = 0; i < cardBlock.children.length; i++){
-          if(event.target.parentNode === cardBlock.children[i]){
-            y = i
-            console.log(y)
-          }
-        }
-        restaurant.employees.splice(y, 1)
-        event.target.parentNode.remove()
-      })
-    }
-    
-  }
-  
-  
-}
-createCard ()
-
-
-
-
-
-let j
-
-
-
-let parent
-window.addEventListener('load', () => {
-  // createCard()
-  // windowLoad()
-  
-})
-let evnt
-let flags = true
-
-
-
-buttonAddCard.addEventListener('click', () => {
-  console.log(isFlag)
-  j = true;
-  myWindow.style = `display: block`;
-})
-
-
-
-
-
-
-
-
-
-buttonSave.addEventListener('click', () => {
-  
-  changeCard()
-  
-})
-
-
-
-backWindow.addEventListener('click', () => {
+let popupWindow = mainBlock.appendChild(document.createElement('div'));
+popupWindow.className = 'popupWindow';
+let backgroundWindow = popupWindow.appendChild(document.createElement('div'));
+backgroundWindow.className = 'backgroundWindow';
+backgroundWindow.addEventListener('click', () => {
   for(let i = 0; i < document.getElementsByClassName('inputInfo').length; i++){
     document.getElementsByClassName('inputInfo')[i].value = '';
   }
   isFlag = false;
-  myWindow.style = `display: none`;
+  popupWindow.style = `display: none`;
+})
+let modalWindow = popupWindow.appendChild(document.createElement('div'));
+modalWindow.className = 'modalWindow';
+for(let props in restaurant.employees[0]) {
+  if(props === 'isWorks') {
+    let inputRadioBlock = document.createElement('div');
+    inputRadioBlock.innerHTML = `<p>${props}</p>
+    <input type="radio" id="contactChoice1" name="isWorks" value="true">
+    <label for="contactChoice1">yes</label>
+    <input type="radio" id="contactChoice2" name="isWorks" value="false">
+    <label for="contactChoice2">no</label>`
+    inputRadioBlock.className = 'inputInfo';
+    modalWindow.appendChild(inputRadioBlock);
+  } else {
+    if(props === 'isLeader') {
+      let inputRadioBlock = document.createElement('div');
+      inputRadioBlock.innerHTML = `<p>${props}</p>
+      <input type="radio" id="contactChoice3" name="isLeader" value="true" >
+      <label for="contactChoice3">yes</label>
+      <input type="radio" id="contactChoice4" name="isLeader" value="false">
+      <label for="contactChoice4">no</label>`
+      inputRadioBlock.className = 'inputInfo';
+      modalWindow.appendChild(inputRadioBlock);
+    }
+    else{
+      let input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = props;
+      input.className = 'inputInfo';
+      modalWindow.appendChild(input);
+    }
+  }
+}
+let buttonSave = modalWindow.appendChild(document.createElement('div'))
+buttonSave.innerText = 'SAVE'
+buttonSave.className = 'buttonSave'
+let indexBlockEmployee
+
+function createCard () {
+  for(let i = 0; i < restaurant.employees.length; i++){
+    if(!cardBlock.children[i]) {
+      employeeCard = cardBlock.appendChild(document.createElement('div'));
+      employeeCard.className = 'employeeCard';
+      for(let item in restaurant.employees[i]) {
+        itemBlockInfo = employeeCard.appendChild(document.createElement('div'));
+        itemBlockInfo.className = 'itemBlockInfo';
+        employeeProperty = itemBlockInfo.appendChild(document.createElement('div'));
+        employeeInfo = itemBlockInfo.appendChild(document.createElement('div'));
+        employeeProperty.innerText = item;
+        employeeInfo.innerText = restaurant.employees[i][item];
+        employeeInfo.className = item;
+      }
+      let buttonChange = document.createElement('div');
+      buttonChange.innerText = 'change';
+      changeEmployee = employeeCard.appendChild(buttonChange);
+      changeEmployee.className = 'changeEmployee';
+      changeEmployee.addEventListener('click', () => {
+        popupWindow.style = `display: block`;
+        eventTarget = event.target;
+        isFlag = true;
+        for(let i = 0; i < cardBlock.children.length; i++){
+          if(eventTarget.parentNode === cardBlock.children[i]){
+            indexBlockEmployee = i;
+          }
+        }
+      })
+      let deleteCard = document.createElement('div');
+      deleteCard.innerText = 'delete';
+      deleteCard.className = 'buttonDelete';
+      buttonDelete = employeeCard.appendChild(deleteCard);
+      buttonDelete.addEventListener('click', () => {
+        let indexDeleteEmployee;
+        for(let i = 0; i < cardBlock.children.length; i++){
+          if(event.target.parentNode === cardBlock.children[i]){
+            indexDeleteEmployee = i;
+          }
+        }
+        restaurant.employees.splice(indexDeleteEmployee, 1);
+        event.target.parentNode.remove();
+      })
+    }
+  }
+}
+createCard ()
+
+buttonAddCard.addEventListener('click', () => {
+  popupWindow.style = `display: block`;
 })
 
-let mas
+buttonSave.addEventListener('click', () => {
+  changeCard();
+})
 
-let elem
 function changeCard () {
-  
-  let elemCard = document.getElementsByClassName('inputInfo')
+  let elementInput = document.getElementsByClassName('inputInfo');
   if(isFlag){
-    for(let i = 0; i < elemCard.length; i++) {
-      if(document.getElementsByClassName('inputInfo')[i].children.length){
-        mas = document.getElementsByClassName('inputInfo')[i]
-        for(let j = 0; j < mas.children.length; j++) {
-          if(mas.children[j].checked) {
-            let mm = mas.children[j].name
-            restaurant.employees[x][mm] = Boolean(mas.children[j].value === 'true')
-            evnt.parentElement.children[i].children[1].innerText = '' + mas.children[j].value
-            //+ mas.children[i].value
-            
+    for(let i = 0; i < elementInput.length; i++) {
+      if(elementInput[i].children.length){
+        for(let j = 0; j < elementInput[i].children.length; j++) {
+          if(elementInput[i].children[j].checked) {
+            let elementInputRadio = elementInput[i].children[j].name;
+            restaurant.employees[indexBlockEmployee][elementInputRadio] = Boolean(elementInput[i].children[j].value === 'true');
+            eventTarget.parentElement.children[i].children[1].innerText = '' + elementInput[i].children[j].value;
           }
         }
-        
       } else {
-        if(elemCard[i].value !== '') {
-          let mm = elemCard[i].placeholder
-          
-          //console.log(restaurant.employees[j])
-          if (elemCard[i].placeholder === 'salary' || elemCard[i].placeholder === 'department') {
-            restaurant.employees[x][mm] = Number(elemCard[i].value)
-            
+        if(elementInput[i].value !== '') {
+          let elementInputName = elementInput[i].placeholder;
+          if (elementInput[i].placeholder === 'salary' || elementInput[i].placeholder === 'department') {
+            restaurant.employees[indexBlockEmployee][elementInputName] = Number(elementInput[i].value);
           } else {
-            restaurant.employees[x][mm] = elemCard[i].value
+            restaurant.employees[indexBlockEmployee][elementInputName] = elementInput[i].value
           }
-          evnt.parentElement.children[i].children[1].innerText = elemCard[i].value
-          elemCard[i].value = ''
+          eventTarget.parentElement.children[i].children[1].innerText = elementInput[i].value
+          elementInput[i].value = ''
         }
       }
-      
-      
     }
     isFlag = false;
   } else {
-    let obj = {};
-    for(let i = 0; i < elemCard.length; i++) {
-      let mass = document.getElementsByClassName('inputInfo')[i]
-      if(mass.children.length){
-        
-        for(let j = 0; j < mass.children.length; j++) {
-          if(mass.children[j].checked) {
-            let namess = mass.children[j].name
-            obj[namess] = Boolean(mass.children[j].value === 'true')
-            
+    let resultObject = {};
+    for(let i = 0; i < elementInput.length; i++) {
+      let definitelyInput = document.getElementsByClassName('inputInfo')[i];
+      if(definitelyInput.children.length){
+        for(let j = 0; j < definitelyInput.children.length; j++) {
+          if(definitelyInput.children[j].checked) {
+            resultObject[definitelyInput.children[j].name] = Boolean(definitelyInput.children[j].value === 'true');
           }
         }
       } else {
-        if(elemCard[i].value !== '') {
-          let nameElem = elemCard[i].placeholder;
-          if (elemCard[i].placeholder === 'salary' || elemCard[i].placeholder === 'department') {
-            obj[nameElem] = Number(elemCard[i].value)
+        if(elementInput[i].value !== '') {
+          if (elementInput[i].placeholder === 'salary' || elementInput[i].placeholder === 'department') {
+            resultObject[elementInput[i].placeholder] = Number(elementInput[i].value);
           } else {
-            obj[nameElem] = elemCard[i].value;
+            resultObject[elementInput[i].placeholder] = elementInput[i].value;
           }
-          elemCard[i].value = ''
+          elementInput[i].value = '';
         }
       }
-      
     }
-    restaurant.employees.push(obj)
-    
-    createCard()
+    restaurant.employees.push(resultObject);
+    createCard();
   }
-  myWindow.style = `display: none`
+  popupWindow.style = `display: none`;
 }
 
-
-// document.querySelector('.buttonSumSalary').addEventListener('click', () => {console.log('qwe')})
+let blockCalculateSalary = document.createElement('div');
+mainBlock.appendChild(blockCalculateSalary);
+blockCalculateSalary.className = 'sumSalary';
+blockCalculateSalary.innerHTML = `
+<div class="buttonSumSalary">calculate salary</div>
+<div class="buttonAverageSalary">average salary</div>
+<div class="buttonMinToMaxSalary">salary min and max</div>
+<div class="buttonAmountEmployee">amount employee</div>
+<p>is works</p>
+<select class="selectIsWorks">
+<option>true</option>
+<option>false</option>
+</select>
+<p>Department</p>
+<select class="selectDepartment">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+<div class="resultElement"></div>
+`;
+document.querySelector('.buttonSumSalary').addEventListener('click', () => {
+  for(let i = 0; i < document.querySelector('.resultElement').children.length; i++){
+    document.querySelector('.resultElement').children[i].remove();
+    i--;
+  }
+  let isWorksValue = Boolean (document.querySelector('.selectIsWorks').value === 'true');
+  let dapartmentValue = Number (document.querySelector('.selectDepartment').value);
+  let resultText = document.createElement('p');
+  let result = restaurant.sumSalary((item) => item.department === dapartmentValue && item.isWorks === isWorksValue);
+  for(let i in result) {
+    document.querySelector('.resultElement').appendChild(resultText);
+    resultText.innerText = `department ${i} - salary ${result[i]}`;
+  }
+})
+document.querySelector('.buttonAverageSalary').addEventListener('click', () => {
+  for(let i = 0; i < document.querySelector('.resultElement').children.length; i++){
+    document.querySelector('.resultElement').children[i].remove();
+    i--;
+  }
+  let isWorksValue = Boolean (document.querySelector('.selectIsWorks').value === 'true');
+  let dapartmentValue = Number (document.querySelector('.selectDepartment').value);
+  let resultText = document.createElement('p');
+  document.querySelector('.resultElement').appendChild(resultText);
+  result = restaurant.averageSalary((item) => item.department === dapartmentValue && item.isWorks === isWorksValue);
+  resultText.innerText = `department ${dapartmentValue} - average salary ${result}`;
+})
+document.querySelector('.buttonMinToMaxSalary').addEventListener('click', () => {
+  for(let i = 0; i < document.querySelector('.resultElement').children.length; i++){
+    document.querySelector('.resultElement').children[i].remove();
+    i--;
+  }
+  let isWorksValue = Boolean (document.querySelector('.selectIsWorks').value === 'true');
+  let dapartmentValue = Number (document.querySelector('.selectDepartment').value);
+  let result = restaurant.salaryMinToMax((item) => item.department === dapartmentValue && item.isWorks === isWorksValue);
+  for(let i in result){
+    for(let j in result[i]){
+      let resultText = document.createElement('p');
+      document.querySelector('.resultElement').appendChild(resultText);
+      resultText.innerText = (` ${j}  min - ${result[i][j]['min']}, max - ${result[i][j]['max']}`);
+    }
+  }
+})
+document.querySelector('.buttonAmountEmployee').addEventListener('click', () => {
+  for(let i = 0; i < document.querySelector('.resultElement').children.length; i++){
+    document.querySelector('.resultElement').children[i].remove();
+    i--;
+  }
+  let isWorksValue = Boolean (document.querySelector('.selectIsWorks').value === 'true');
+  let dapartmentValue = Number (document.querySelector('.selectDepartment').value);
+  let resultText = document.createElement('p');
+  let result = restaurant.amountEmployee((item) => item.department === dapartmentValue && item.isWorks === isWorksValue);
+  resultText.innerText = `department ${dapartmentValue} 
+  amount employee - ${result}`;
+  document.querySelector('.resultElement').appendChild(resultText);
+})
